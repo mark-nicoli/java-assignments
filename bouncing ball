@@ -1,0 +1,133 @@
+/*
+
+CS171 project.
+mark nicoli.
+16th of December 2016.
+stdent number: 16356646.
+
+ball game 
+
+*/
+
+PImage startscreen;                          
+PFont title;
+int stage;
+int position_x = 1;                          //position
+int direction_x = 1;                         //direction
+int direction_y = 2;
+int position_y = 1;
+int speed = 1;
+int score = 0;
+int lives = 5;
+boolean lost= false;
+int size1=80;                    
+int size2=80;
+
+import ddf.minim.*;                          //import music
+Minim minim;                             
+AudioPlayer player;
+/////////////////////////////////////////////////////////////////////////////////////////////////
+void setup()
+{
+  stage = 1;                                         //1st stage
+  size(720,1080);
+  startscreen = loadImage("startscreengame.jpg");    //make startscreen image
+  image(startscreen,0,0);                            
+  title = createFont("font",1000,true);
+  
+  //size(displayWidth,displayHeight);             //fullscreen
+  position_x = width/2;
+  position_y = height/2;                          //put ball in the middle of the screen at start
+  fill(255,255,0);                                // set the colour of the text
+  textSize(25);                                   //set size of the text
+  
+  minim = new Minim(this);
+  player = minim.loadFile("musicforgame2.mp3");   //taken from youtube
+  player.play();
+  
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+void draw()
+{
+  background(startscreen);
+  
+  if(stage==1)                                          //startscreen
+  {
+    textAlign(CENTER);
+    text("bouncing ball game",395,437);
+    text("press any key to continue",391,487);
+    
+    if(keyPressed==true)                                //if a key is pressed the game moves onto the second screen
+    {
+      stage = 2;                                        //move onto if statement
+    }
+  }
+  
+ else if (stage==2)                                     //actual game screen
+  {
+    
+   //background(scene);
+  background(startscreen);                              //sets the background clears the screen each frame
+  ellipse(position_x,position_y,size1,size2);
+  position_x = position_x+(speed*direction_x);   
+  if (position_x > width-(size1/2) || position_x < size1/2)    //side boundaries
+  {
+    direction_x = -direction_x;                                //reverse direction if it hits the wall
+  }
+   position_y = position_y+(speed*direction_y);   
+  if (position_y > height-(size1/2) || position_y < size1/2)   //bottom and top boundaries
+  {
+    direction_y = -direction_y;                                //reverse direction if it hits the wall
+  }
+  text("score = "+score,100,20);
+  text("lives = "+lives,300,20);
+  
+  if (lives==0)
+  {
+    textSize(30);
+    text("touch to restart",displayWidth/2,displayHeight/2+100);
+    //noLoop();
+    lost = true;
+    textSize(25);
+  } 
+}
+
+
+if (lives==0)                                                   // run out of lives        
+ {
+    text("you lost \n click the screen to continue",400,400);   // game over 
+ }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+void mousePressed()
+{
+  if (dist(mouseX,mouseY, position_x,position_y)<=size1)  // if the mouse hits the ellipse
+  {
+    size1--;                                              //decrease the size each time ball is tapped
+    size2--;
+    score = score+1;                               //increase the score
+    speed++;                                               //increase the speed
+    fill(random(100,255),random(100,255),random(100,255)); // interval with brighter colours
+  }
+  else                                               //if you do not click the ellipse
+  {
+    lives = lives-1;                                 //decrease lives
+  }
+     
+  if (lost==true)                                    //if you lose
+  {
+    speed=1;                                         //reset the whole game
+    lives=5;                                         
+    score=0;
+    position_x=width/2;
+    position_y=height/2;
+    direction_y= 1;
+    direction_x=1;
+    lost=false;
+    loop();
+    size1 = 80;
+    size2 = 80;
+    clear();
+    text("you lost",displayWidth,200);
+   }
+}
