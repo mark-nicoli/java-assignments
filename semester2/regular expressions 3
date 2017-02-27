@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class regEx
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        boolean a = true;
+        while(a==true)
+        {
+            String age = scan.nextLine();
+            if(age.matches("[0-9][0-9]|1[0-4][0-9]|[1-9]")==true)
+            {
+                System.out.println("Age is valid");
+                a = false;
+            }
+            else
+            {
+                System.out.println("Age is NOT valid");
+            }
+        }
+    }
+}
