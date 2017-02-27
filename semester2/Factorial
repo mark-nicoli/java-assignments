@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class Factorial
+{
+    public static void main (String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        int a = scan.nextInt();    //minvalue
+        int b = scan.nextInt();    //maxvalue
+        //getFactorial(b);
+        if(a<0 || b<0)
+        {
+            System.out.println("Not a valid entry!");
+        }
+        else
+        {
+           for(int i=a; i<=b;i++)
+           {
+             getFactorial(i);
+           }
+        }
+        
+    }
+    
+    public static void getFactorial(int b)
+    {
+        int factorial = 1;
+        for (int i = 1; i<=b; i++)
+        {
+            factorial = factorial*i;
+        }
+       System.out.println(factorial);
+    }
+}
