@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class StarTriangle
+{
+    public static void main(String[]args)
+    {
+        Scanner scan  = new Scanner(System.in);
+        int num = scan.nextInt();
+        printStarTriangle(num);
+        
+    }
+    public static void printStarTriangle(int num)
+    {
+        for (int i =0; i<num; i++)
+        {
+            for (int j = 0; j<i+1 ;j++)
+            {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+   
+    
+}
