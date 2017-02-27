@@ -1,0 +1,39 @@
+import java.util.Scanner;
+public class SearchArray
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        int size =(int) scan.nextDouble();
+        double array[] = new double [size];
+        //double size = scan.nextDouble();
+        
+        for(int i =0; i <array.length;i++)
+        {
+            array[i] = scan.nextDouble();
+        }
+        double num = scan.nextDouble();
+        
+        if(findElement(array,num)==true)
+        {
+            System.out.println(num+"was found in the array");
+        }
+        else
+        {
+            System.out.println(num+"was NOT found in the array");
+        }
+        
+    }
+    public static boolean findElement(double Array[],double num)
+    {
+        boolean got = false;
+        for (int i = 0; i < Array.length;i++)
+        {
+            if (Array[i]==num)
+            {
+                  got = true;
+            }
+        }
+        return got;
+    }
+}
