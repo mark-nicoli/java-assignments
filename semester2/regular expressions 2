@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class regEx
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        String Sentence = scan.nextLine();
+        test(Sentence);
+    }
+    public static void test(String Sentence) 
+    {
+        if(Sentence.matches("[a-b]*")==true)
+        {
+
+           if(Sentence.matches("a[a-b]b")==true)
+           {
+               System.out.println("1");
+           }
+           if(Sentence.matches("[a-b]*b")==true)
+           {
+               System.out.println("2");
+           }
+           if(Sentence.matches("a[a-b]*")==true)
+           {
+               System.out.println("3");
+           }
+           if(Sentence.matches("[a-b]a*")==true)
+           {
+               System.out.println("4");
+           }
+        }
+       else
+       {
+            System.out.println("Not in the language");
+       }
+    }
+}
