@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class regEx
+{
+    public static void main(String []args)
+    {
+        Scanner scan = new Scanner (System.in);
+        String sentence = scan.nextLine();
+        deactivate(sentence);
+    }
+    
+    public static void deactivate(String sentence)
+    {
+        boolean a = true;
+        if(sentence.matches("[0-9]*1234[0-9]*"))
+        { 
+            if (sentence.length()<=10)
+            {
+                System.out.println("Alarm Deactivated");
+            }
+            else if (sentence.length()>=10)
+            {
+                System.out.println("Alarm Activated");
+            }
+        }
+        else if(sentence.matches("[0-9]*1234[0-9]*")== false)
+        {
+            System.out.println("Alarm Activated");
+        }
+    }
+}
