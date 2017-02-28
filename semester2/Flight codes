@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class regEx
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        //String sentence = scan.nextLine();
+        //System.out.println(sentence.matches("[A-Z]{2,3}[0-9]{3,4}"));
+       boolean a = true;
+       
+       while( a== true)
+       {
+           String sentence = scan.nextLine();
+           if (sentence.matches("[A-Z]{2,3}[0-9]{3,4}"))
+           {
+               System.out.println("Flight code is valid");
+               a = false;
+           }
+           else
+           {
+               System.out.println("Flight code is NOT valid");
+           }
+       }
+    }
+}
