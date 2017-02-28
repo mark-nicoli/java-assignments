@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class regEx
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        //String sentence = scan.nextLine();
+        boolean a = true;
+        
+        while (a==true)
+        {
+            String sentence = scan.nextLine();
+            if (sentence.matches("[A-Z][a-z]{1,24}")==true)
+            {
+                System.out.println("Name is valid");
+                a = false;
+            }
+            else
+            {
+                System.out.println("Name is NOT valid");
+            }
+        }
+    }
+}
