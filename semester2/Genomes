@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class regEx
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        String sentence = scan.nextLine();
+        test(sentence);
+        boolean a = test(sentence);
+        
+        if (a==true)
+        {
+            System.out.println("True");
+        }
+        else
+        {
+            System.out.println("False");
+        }
+    }
+    
+    public static boolean test(String sentence)
+    {
+        if (sentence.matches("[cgat]*"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
