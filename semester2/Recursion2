@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class Recursion2
+{
+	public static void main(String args[])
+	{
+		Scanner scan = new Scanner(System.in);
+		String sentence=scan.next();                  
+		String substring=scan.next();;              
+		boolean res=(strCount(sentence, substring));
+		System.out.println(res);
+		scan.close();
+ }
+
+ public static boolean strCount(String sentence, String substring)
+ {
+	 if(substring.length()>sentence.length())
+	 {
+		 return false;
+	 }
+	 else
+	 {
+		 if(sentence.substring(0,substring.length()).equals(substring))
+		 {
+			 return true;
+		 }
+
+		 else
+		 {
+			 return false;
+		 }
+	 }
+ }
+}
